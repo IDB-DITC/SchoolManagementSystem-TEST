@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="02/11/2025 12:08:57" ReportInfo.Modified="02/11/2025 13:18:45" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Styles Name="Sand">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="Moccasin" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="Moccasin" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="FloralWhite" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="DbConn" ConnectionString="rijcmlqJUrEa/KIcQqhhcfnlqC6PC6b70ltOmTeLWh2vhAF0ivYvQZbcY/A8qTXhAWsZJeFGEPA9xrXyYOG3aFk4+m5VNcXiJ0JMRmzPXK8CBkFT/kSLdwRJD/PhMi85OIn1hhUXVqRbNGn8mCuJYXFnWOESH4addj3xZpjjTW9KKKXmK+t2qsd8ZhkUH6q0jmN6QzmNNIFVDZKDpJhwKgJVU2BiA==" ConnectionStringExpression="[dbCon]">
+      <ProcedureDataSource Name="sp_studentDetails" DataType="System.Int32" Enabled="true" TableName="sp_studentDetails" SelectCommand="sp_studentDetails">
+        <Column Name="AdmissionNo" DataType="System.Int32"/>
+        <Column Name="StudentName" DataType="System.String"/>
+        <Column Name="StandardName" DataType="System.String"/>
+        <Column Name="StudentDOB" DataType="System.DateTime"/>
+        <Column Name="Gender" DataType="System.String"/>
+        <ProcedureParameter Name="@studentid" DataType="8" Expression="[id]" Direction="Input"/>
+      </ProcedureDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="id" DataType="System.Int32" Expression="2"/>
+    <Parameter Name="dbCon" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="37.8">
+      <TextObject Name="Text1" Width="1047.06" Height="37.8" Dock="Fill" Text="sp_studentDetails" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+      <TextObject Name="Text14" Left="-9450" Top="-9450" Width="94.5" Height="18.9" Text="dbCon" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <GroupHeaderBand Name="GroupHeader1" Top="43.13" Width="1047.06" Height="18.9" Condition="[sp_studentDetails.Gender]">
+      <TextObject Name="Text12" Width="1047.06" Height="18.9" Dock="Fill" Text="[sp_studentDetails.Gender]" Font="Arial, 10pt, style=Bold" Style="Group"/>
+      <DataBand Name="Data1" Top="67.37" Width="1047.06" Height="103.95" DataSource="sp_studentDetails">
+        <TextObject Name="Text2" Width="113.4" Height="18.9" Fill.Color="Moccasin" Text="AdmissionNo" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text3" Left="113.4" Width="926.1" Height="18.9" Text="[sp_studentDetails.AdmissionNo]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text4" Top="18.9" Width="113.4" Height="18.9" Fill.Color="Moccasin" Text="StudentName" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text5" Left="113.4" Top="18.9" Width="926.1" Height="18.9" Text="[sp_studentDetails.StudentName]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text6" Top="37.8" Width="113.4" Height="18.9" Fill.Color="Moccasin" Text="StandardName" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text7" Left="113.4" Top="37.8" Width="926.1" Height="18.9" Text="[sp_studentDetails.StandardName]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text8" Top="56.7" Width="113.4" Height="18.9" Fill.Color="Moccasin" Text="StudentDOB" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text9" Left="113.4" Top="56.7" Width="926.1" Height="18.9" Text="[sp_studentDetails.StudentDOB]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text10" Top="75.6" Width="113.4" Height="18.9" Fill.Color="Moccasin" Text="Gender" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text11" Left="113.4" Top="75.6" Width="926.1" Height="18.9" Text="[sp_studentDetails.Gender]" Font="Arial, 10pt" Style="Data"/>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="176.65" Width="1047.06" Height="18.9"/>
+    </GroupHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="200.88" Width="1047.06" Height="18.9">
+      <TextObject Name="Text13" Width="1047.06" Height="18.9" Dock="Fill" Fill.Color="Moccasin" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
